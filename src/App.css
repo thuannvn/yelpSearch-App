@@ -1,3 +1,6 @@
+.right-ads {
+  border: 1px solid green;
+}
 .scroll {
   overflow-y: auto !important;
   max-height: 650px !important;

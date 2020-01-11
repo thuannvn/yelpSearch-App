@@ -80,9 +80,8 @@ class App extends Component {
     return (
       <div className="container-fluid">
         <ReactiveBase
-          app="yelp-app"
-          credentials="hkXdk3vcA:a32683f3-c8ad-45db-8c86-2ac2c0f45e0c"
-          type="yelp-app"
+          app="bds"
+          url="http://127.0.0.1:7777"
         >
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand" href="#">
@@ -106,10 +105,21 @@ class App extends Component {
               id="navbarSupportedContent"
             >
               <div className="col-lg-7 dataSearch">
+
                 <DataSearch
-                  componentId="nameReactor"
+                  componentId="SearchSensor"
                   placeholder="Search for Restaurants, Bars"
-                  dataField="name"
+                  dataField={[
+                    'address',
+                    'title'
+                  ]}
+                  autosuggest="true"
+                  fuzziness="0"
+                  highlight="true"
+                  highlightField={[
+                    'address',
+                    'title'
+                  ]}
                   searchInputId="NameSearch"
                   iconPosition="right"
                 />
@@ -282,35 +292,10 @@ class App extends Component {
               />
             </div>
 
-            <div className="col-lg-3 col-md-3 col-sm-6">
-              <ReactiveMap
-                dataField="location"
-                componentId="maps"
-                defaultZoom={13}
-                defaultCenter={{ lat: 14.55436, lng: -85.76 }}
-                historicalData={true}
-                setMarkerCluster={true}
-                showMapStyles={false}
-                showSearchAsMove={false}
-                defaultMapStyle="Light Monochrome"
-                onPopoverClick={this.onPopoverClick}
-                autoCenter={true}
-                size={100}
-                react={{
-                  and: [
-                    "currencyReactor",
-                    "ratingsReactor",
-                    "cuisineReactor",
-                    "deliveringNowReactor",
-                    "bookingReactor",
-                    "deliveryReactor",
-                    "tableBookinReactor",
-                    "nameReactor",
-                    "RangeSliderSensor"
-                  ]
-                }}
-              />
+            <div className="right-ads col-lg-3 col-md-3 col-sm-6">
+            
             </div>
+            
           </div>
         </ReactiveBase>
       </div>
